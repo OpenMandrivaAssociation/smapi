@@ -14,6 +14,7 @@ Release:	%{release}
 License:	GPL
 Group:		System/Libraries
 Source:		%{name}-%{major}-%{preversion}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Patch0:		smapi-20021015-main.patch
 Patch1:		smapi-Makefile.diff
 URL:		http://sourceforge.net/projects/husky/
