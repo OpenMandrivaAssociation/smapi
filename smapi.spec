@@ -1,7 +1,7 @@
 %define name    smapi
 %define version 2.4.0
 %define preversion rc5
-%define rel %mkrel 2
+%define rel %mkrel 4
 %define release 0.%{preversion}.%{rel}
 
 %define major 2.4
