@@ -1,0 +1,12 @@
+--- smapi/Makefile-old	2003-11-19 00:26:23.000000000 -0500
++++ smapi/Makefile	2003-11-19 00:30:44.000000000 -0500
+@@ -73,9 +73,6 @@
+ 	$(LN) $(LNOPT) $(LIBPREFIX)smapi.so.$(VER) $(LIBPREFIX)smapi.so.$(VERH) ;\
+ 	$(LN) $(LNOPT) $(LIBPREFIX)smapi.so.$(VER) $(LIBPREFIX)smapi.so.$(VERMAJOR) ;\
+ 	$(LN) $(LNOPT) $(LIBPREFIX)smapi.so.$(VER) $(LIBPREFIX)smapi.so
+-ifneq (~$(LDCONFIG)~, ~~)
+-	$(LDCONFIG)
+-endif
+ 
+ else
+ instdyn: $(TARGET)

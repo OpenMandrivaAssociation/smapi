@@ -1,0 +1,11 @@
+--- smapi/Makefile-old	Sat Jul 28 00:53:11 2001
++++ smapi/Makefile	Sat May 18 02:45:34 2002
+@@ -5,7 +5,7 @@
+ # Every Debian-Source-Paket has one included.
+ include debian/huskymak.cfg
+ else
+-include ../huskymak.cfg
++include /usr/share/husky/huskymak.cfg
+ endif
+ 
+ ifeq ($(DEBUG), 1)
