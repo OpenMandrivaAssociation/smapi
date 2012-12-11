@@ -1,7 +1,7 @@
 %define name    smapi
 %define version 2.4.0
 %define preversion rc5
-%define rel %mkrel 6
+%define rel 5
 %define release 0.%{preversion}.%{rel}
 
 %define major 2.4
@@ -13,10 +13,10 @@ Version:	%{version}
 Release:	%{release}
 License:	GPL
 Group:		System/Libraries
-Source:		%{name}-%{major}-%{preversion}.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+Source0:		%{name}-%{major}-%{preversion}.tar.bz2
 Patch0:		smapi-20021015-main.patch
 Patch1:		smapi-Makefile.diff
+patch2:		smapi-2.4-rc5.huskymap.patch
 URL:		http://sourceforge.net/projects/husky/
 BuildRequires:	huskybse
 
@@ -49,29 +49,19 @@ other Husky-Packages.
 
 %prep
 %setup -q -n %name
-%patch0 -p1
+#% patch0 -p1
 %patch1 -p1
+%patch2 -p1 -b .huskymak
 
 %build
 %make OPTCFLAGS="$RPM_OPT_FLAGS -fPIC -s -c"
 
 %install
-rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}/smapi/                                                                
 %make INCDIR=$RPM_BUILD_ROOT%{_includedir} LIBDIR=$RPM_BUILD_ROOT%{_libdir} install
 install -m 644 cvsdate.h $RPM_BUILD_ROOT%{_includedir}/smapi/
 
 chmod 755 $RPM_BUILD_ROOT%{_libdir}/*.so*
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
 
 %files -n %libname
 %defattr(-,root,root)
@@ -85,4 +75,39 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libsmapi.a
 
 
+
+
+
+%changelog
+* Sat Aug 02 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.4.0-0.rc5.5mdv2009.0
++ Revision: 260821
+- rebuild
+
+* Tue Jul 29 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.4.0-0.rc5.4mdv2009.0
++ Revision: 252636
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 2.4.0-0.rc5.2mdv2008.1
++ Revision: 136503
+- restore BuildRoot
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Tue Jan 09 2007 Thierry Vignaud <tvignaud@mandriva.com> 2.4.0-0.rc5.2mdv2007.0
++ Revision: 106738
+- fix provides
+
+* Sun Jul 16 2006 Olivier Thauvin <nanardon@mandriva.org> 2.4.0-0.rc5.1mdv2007.0
++ Revision: 41308
+- 2.4 rc5
+- 2.4 rc5
+- Import smapi
+
+* Sun Jan 30 2005 Sylvie Terjan <erinmargault@mandrake.org> 2.4.0rc2-2mdk
+- birthday rebuild
 

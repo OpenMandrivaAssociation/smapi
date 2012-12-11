@@ -1,0 +1,15 @@
+--- smapi/Makefile.huskymak	2012-11-06 19:06:50.250801199 +0400
++++ smapi/Makefile	2012-11-06 19:07:12.476800766 +0400
+@@ -1,12 +1,8 @@
+ # Makefile for the Husky build environment
+ 
+ # include Husky-Makefile-Config
+-ifeq ($(DEBIAN), 1)
+ # Every Debian-Source-Paket has one included.
+ include /usr/share/husky/huskymak.cfg
+-else
+-include ../huskymak.cfg
+-endif
+ 
+ include makefile.inc
+ 
