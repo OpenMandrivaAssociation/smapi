@@ -17,7 +17,7 @@ Source0:		%{name}-%{major}-%{preversion}.tar.bz2
 Patch0:		smapi-20021015-main.patch
 Patch1:		smapi-Makefile.diff
 patch2:		smapi-2.4-rc5.huskymap.patch
-URL:		http://sourceforge.net/projects/husky/
+URL:		https://sourceforge.net/projects/husky/
 BuildRequires:	huskybse
 
 %description
